@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="ManifoldCreator.UI.Cell"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ManifoldCreator.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="PolygonHoverStyle" TargetType="{x:Type Polygon}">
+                <Setter Property="Fill" Value="#FF948A54"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Fill" Value="Black"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Viewbox Stretch="Uniform">
+            <Canvas x:Name="myCanvas" Width="100" Height="100" >
+                <Canvas.Children>
+                    <Polygon x:Name="TopLeft" Points="0,0 50,50 50,0" ></Polygon>
+                    <Polygon x:Name="TopRight" Points="50,50 50,0 100,0"  ></Polygon>
+                    <Polygon x:Name="RightTop" Points="100,0 100,50 50,50"  ></Polygon>
+                    <Polygon x:Name="RightBottom" Points="100,100 50,50 100,50"  ></Polygon>
+                    <Polygon x:Name="BottomRight" Points="100,100 50,50 50,100"  ></Polygon>
+                    <Polygon x:Name="BottomLeft" Points="0,100 50,50 50,100" ></Polygon>
+                    <Polygon x:Name="LeftBottom" Points="0,100 50,50 0,50" ></Polygon>
+                    <Polygon x:Name="LeftTop" Points="0,0 50,50 0,50" ></Polygon>
+
+                    <Line X1="0" Y1="0" X2="100" Y2="100" StrokeThickness="5"  x:Name="TopLeftBottomRight"></Line>
+                    <Line X1="0" Y1="100" X2="100" Y2="0" StrokeThickness="5"  x:Name="TopRightBottomLeft"></Line>
+                    <Line X1="0" Y1="0" X2="100" Y2="0" StrokeThickness="5"  x:Name="Top"></Line>
+                    <Line X1="100" Y1="0" X2="100" Y2="100" StrokeThickness="5"  x:Name="Right"></Line>
+                    <Line X1="100" Y1="100" X2="0" Y2="100" StrokeThickness="5"  x:Name="Bottom"></Line>
+                    <Line X1="0" Y1="0" X2="0" Y2="100" StrokeThickness="5"  x:Name="Left"></Line>
+                </Canvas.Children>
+            </Canvas>
+        </Viewbox>
+    </Grid>
+</UserControl>
