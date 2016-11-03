@@ -20,14 +20,50 @@ namespace ManifoldCreator.UI
     /// </summary>
     public partial class Cell : UserControl
     {
-        Brush DefaultBrush = Brushes.Blue;        
+        Brush DefaultBrush = Brushes.Blue;
         Brush State1Brush = Brushes.Black;
-        Brush State2Brush = Brushes.White;             
+        Brush State2Brush = Brushes.White;
 
         List<Polygon> Polygons { get; set; } = new List<Polygon>();
 
-        public Cell()
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public CellState GetCellState()
         {
+            return new CellState
+            {
+                TopLeft = GetCellState(TopLeft),
+                TopRight = GetCellState(TopRight),
+                RightTop = GetCellState(RightTop),
+                RightBottom = GetCellState(RightBottom),
+                BottomRight = GetCellState(BottomRight),
+                BottomLeft = GetCellState(BottomLeft),
+                LeftBottom = GetCellState(LeftBottom),
+                LeftTop = GetCellState(LeftTop)
+            };
+        }
+
+        private PolygonState GetCellState(Polygon polygon)
+        {
+            if (polygon.Fill == DefaultBrush)
+            {
+                return PolygonState.Default;
+            }
+            else if (polygon.Fill == State1Brush)
+            {
+                return PolygonState.Black;
+            }
+            else //if (polygon.Fill == State2Brush)
+            {
+                return PolygonState.White;
+            }
+        }
+
+        public Cell(int x, int y)
+        {
+            X = x;
+            Y = y;
             InitializeComponent();
 
             Polygons.Add(TopLeft);
@@ -50,15 +86,15 @@ namespace ManifoldCreator.UI
             polygon.Stroke = Brushes.Black;
             polygon.StrokeThickness = 1;
             polygon.Fill = DefaultBrush;
-            polygon.MouseEnter += Polygon_MouseEnter;            
+            polygon.MouseEnter += Polygon_MouseEnter;
             polygon.MouseDown += Polygon_MouseDown;
         }
 
         private void Polygon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var polygon = sender as Polygon;            
+            var polygon = sender as Polygon;
             if (polygon.Fill == DefaultBrush)
-            {                 
+            {
                 BrushHelper.Instance.PaintBrush = State1Brush;
             }
             else if (polygon.Fill == State1Brush)
@@ -71,16 +107,16 @@ namespace ManifoldCreator.UI
             }
             polygon.Fill = BrushHelper.Instance.PaintBrush;
         }
-        
+
         private void Polygon_MouseEnter(object sender, MouseEventArgs e)
-        {            
+        {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 var polygon = sender as Polygon;
-                polygon.Fill = BrushHelper.Instance.PaintBrush;                
+                polygon.Fill = BrushHelper.Instance.PaintBrush;
             }
         }
-        
+
     }
-    
+
 }

@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Cell.xaml">
+    <Page Include="Views\Cell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -67,16 +67,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Cell.xaml.cs">
+    <Compile Include="BrushHelper.cs" />
+    <Compile Include="Views\Cell.xaml.cs">
       <DependentUpon>Cell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CellViewModel.cs" />
+    <Compile Include="CellState.cs" />
+    <Compile Include="Views\CellViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PolygonState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -37,7 +37,8 @@ namespace ManifoldCreator.UI
             {
                 for (int y = 0; y < 8; y++)
                 {
-                    var newCell = new Cell() { DataContext = new CellViewModel(x, y) };
+                    var newCell = new Cell(x,y) { DataContext = new CellViewModel() };
+                    newCell.Padding = new Thickness(1);
                     Grid.SetRow(newCell, y);
                     Grid.SetColumn(newCell, x);
                     MainGrid.Children.Add(newCell);
@@ -46,24 +47,5 @@ namespace ManifoldCreator.UI
         }
     }
 
-    public class BrushHelper
-    {
-        private static BrushHelper _instance;
-        public static BrushHelper Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new BrushHelper();
-                }
-                return _instance;
-            }
-        }
-
-        private BrushHelper()
-        {}
-
-        public Brush PaintBrush { get; set; }
-    }
+    
 }
