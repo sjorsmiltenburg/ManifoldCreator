@@ -93,18 +93,18 @@ namespace ManifoldCreator.UI
         private void Polygon_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var polygon = sender as Polygon;
-            if (polygon.Fill == DefaultBrush)
-            {
-                BrushHelper.Instance.PaintBrush = State1Brush;
-            }
-            else if (polygon.Fill == State1Brush)
-            {
-                BrushHelper.Instance.PaintBrush = State2Brush;
-            }
-            else if (polygon.Fill == State2Brush)
-            {
-                BrushHelper.Instance.PaintBrush = DefaultBrush;
-            }
+            //if (polygon.Fill == DefaultBrush)
+            //{
+            //    BrushHelper.Instance.PaintBrush = State1Brush;
+            //}
+            //else if (polygon.Fill == State1Brush)
+            //{
+            //    BrushHelper.Instance.PaintBrush = State2Brush;
+            //}
+            //else if (polygon.Fill == State2Brush)
+            //{
+            //    BrushHelper.Instance.PaintBrush = DefaultBrush;
+            //}
             polygon.Fill = BrushHelper.Instance.PaintBrush;
         }
 

@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="ManifoldCreator.UI.Views.PaintMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ManifoldCreator.UI.Views"
+             mc:Ignorable="d"              >
+    <StackPanel Orientation="Horizontal">
+        <Button x:Name="BlueButton" Click="BlueButton_Click"  >Blue</Button>
+        <Button x:Name="BlackButton" Click="BlackButton_Click" >Black</Button>
+        <Button x:Name="WhiteButton" Click="WhiteButton_Click" >White</Button>
+    </StackPanel>
+</UserControl>
